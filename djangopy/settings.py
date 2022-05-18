@@ -169,10 +169,6 @@ CORS_ALLOW_METHODS = [
 'PUT',
 ]
 
-CORS_URLS_REGEX = [
-    r'^http:\/\/localhost:\d+$',
-]
-
 SESSION_COOKIE_SAMESITE = "None"
 
 
