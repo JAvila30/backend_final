@@ -4,7 +4,7 @@ from view.ProductView import ProductView
 from view.ClientView import ClientView
 from view.UserView import UserView
 from view.TruckView import TruckView
-from app.view.ClientView import *
+from view.LoginView import LoginView
 from . import views
 
 
