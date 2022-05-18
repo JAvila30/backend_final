@@ -42,8 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app.apps.AppConfig',
-    'rest_framework',
-    'corsheaders',
+
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
@@ -95,6 +95,20 @@ DATABASES = {
         'PORT': os.environ["PGPORT"],
     }
 }
+
+"""DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'HOST':'localhost',
+        'PORT':'3306',
+        'USER':'root',
+        'PASSWORD':'root',
+        'NAME':'proyecto_api',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        }
+    }
+}"""
 
 
 # Password validation
@@ -155,7 +169,9 @@ CORS_ALLOW_METHODS = [
 'PUT',
 ]
 
-CORS_URLS_REGEX = r"^/v1/.*$"
+CORS_URLS_REGEX = [
+    r'^http:\/\/localhost:\d+$',
+]
 
 SESSION_COOKIE_SAMESITE = "None"
 
@@ -171,3 +187,5 @@ CORS_ALLOW_HEADERS = [
 'x-csrftoken',
 'x-requested-with',
 ]
+
+CORS_REPLACE_HTTPS_REFERER = True
