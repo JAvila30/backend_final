@@ -1,10 +1,10 @@
 from django.urls import path
-from views.ContainerView import ContainerView
-from views.ProductView import ProductView
-from views.ClientView import ClientView
-from views.UserView import UserView
-from views.TruckView import TruckView
-from views.LoginView import LoginView, LogOutView
+from view.ContainerView import ContainerView
+from view.ProductView import ProductView
+from view.ClientView import ClientView
+from view.UserView import UserView
+from view.TruckView import TruckView
+from app.view.ClientView import *
 from . import views
 
 
