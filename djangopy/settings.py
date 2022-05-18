@@ -155,6 +155,10 @@ CORS_ALLOW_METHODS = [
 'PUT',
 ]
 
+CORS_URLS_REGEX = r"^/v1/.*$"
+
+SESSION_COOKIE_SAMESITE = "None"
+
 CORS_ALLOW_HEADERS = [
 'accept',
 'accept-encoding',
