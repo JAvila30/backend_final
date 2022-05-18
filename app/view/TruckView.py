@@ -1,10 +1,10 @@
 from django.views import View
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
-from utils.exceptions import BusinessException
-from utils import util
+from app.utils.exceptions import BusinessException
+from app.utils import util
 import json
-from logic import truck_logic
+from app.logic import truck_logic
 
 class TruckView(View):
     print("inicio de TruckView")

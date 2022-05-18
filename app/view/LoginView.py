@@ -1,7 +1,7 @@
 
-from utils import util
-from logic import login_logic
-from utils.exceptions import BusinessException
+from app.utils import util
+from app.logic import login_logic
+from app.utils.exceptions import BusinessException
 from django.views import View
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt

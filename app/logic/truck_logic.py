@@ -1,6 +1,6 @@
-from api.models import Truck
-from api.BC_Status import BCStatus
-from api.utils.exceptions import BusinessException
+from app.models import Truck
+from app.BC_Status import BCStatus
+from app.utils.exceptions import BusinessException
 from http import HTTPStatus
 import uuid
 import json

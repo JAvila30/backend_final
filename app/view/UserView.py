@@ -2,10 +2,10 @@ from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 
-from utils.exceptions import BusinessException
-from utils import util
+from app.utils.exceptions import BusinessException
+from app.utils import util
 import json
-from logic import user_logic
+from app.logic import user_logic
 
 # Create your views here.
 class UserView(View):
