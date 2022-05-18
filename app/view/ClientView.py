@@ -29,7 +29,7 @@ class ClientView(View):
                 exception.httpstatus,
                 None
                 )
-        print("fin de post")
+        print("fin de get")
         return response
     
     def put(self, request,id):
