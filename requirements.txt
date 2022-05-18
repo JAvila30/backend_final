@@ -27,7 +27,6 @@ mysqlclient==2.1.0
 pycparser==2.21
 PyMySQL==1.0.2
 python-dateutil==2.8.2
-pytz==2022.1
 requests==2.27.1
 s3transfer==0.5.2
 shortuuid==1.0.9
