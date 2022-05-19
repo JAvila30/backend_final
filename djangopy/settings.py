@@ -185,4 +185,4 @@ CORS_ALLOW_HEADERS = [
 ]
 
 
-CORS_ORIGIS_WHITELIST = ['http://localhost:3000']
+CORS_ORIGIN_WHITELIST = ['http://localhost:3000']
