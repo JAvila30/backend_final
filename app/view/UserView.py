@@ -25,6 +25,7 @@ class UserView(View):
                 code, description, httpstatus, execution_result = user_logic.get_all()
                 response = util.build_response(code,description,httpstatus,execution_result)
         except BusinessException as exception:
+            print(exception)
             response = util.build_response(
                 exception.code, 
                 exception.description,
@@ -35,12 +36,13 @@ class UserView(View):
         return response
     
     def post(self,request):
-        print("inicio de post")
+        print("inicio de post: ", request.body)
         try:
             json_payload = json.loads(request.body)
             code, description, httpstatus,execution_result = user_logic.save(json_payload)
             response = util.build_response(code,description,httpstatus,execution_result)
         except BusinessException as exception:
+            print(exception)
             response = util.build_response(
                 exception.code, 
                 exception.description,

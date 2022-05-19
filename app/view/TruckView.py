@@ -6,6 +6,7 @@ from app.utils import util
 import json
 from app.logic import truck_logic
 
+
 class TruckView(View):
     print("inicio de TruckView")
     @method_decorator(csrf_exempt)
@@ -22,6 +23,7 @@ class TruckView(View):
                 code, description, httpstatus, execution_result = truck_logic.get_all()
                 response = util.build_response(code,description,httpstatus,execution_result)
         except BusinessException as exception:
+            print(exception)
             response = util.build_response(
                 exception.code, 
                 exception.description,
@@ -51,13 +53,14 @@ class TruckView(View):
         
         
     def post(self, request):
-        print("inicio de post")
+        print("inicio de post: ", request.body)
         try:
             json_payload = json.loads(request.body)
             print(json_payload)
             code, description, httpstatus, execution_response = truck_logic.save(json_payload)
             response = util.build_response(code,description,httpstatus,execution_response)
         except BusinessException as exception:
+            print(exception)
             response = util.build_response(
                 exception.code, 
                 exception.description,
@@ -74,6 +77,7 @@ class TruckView(View):
             code, description, httpstatus, execution_result= truck_logic.delete(id)
             response = util.build_response(code,description,httpstatus,execution_result)
         except BusinessException as exception:
+            print(exception)
             response = util.build_response(
                 exception.code, 
                 exception.description,

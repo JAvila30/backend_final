@@ -14,5 +14,5 @@ def build_response( status_code: str, status_description: str, http_status: int,
             "description":status_description
         },
         "body":body,
-    })
+    },status=http_status)
     

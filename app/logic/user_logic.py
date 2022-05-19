@@ -44,7 +44,6 @@ def save(request):
     data = request
     gen_uuid = uuid.uuid4()
     encryptedpassword=make_password(data["body"]['user_pass'])
-    print(encryptedpassword)
     try:
         user_name = data["body"]['user_name']
         validation = validate_new_user(data)
@@ -77,13 +76,13 @@ def validate_new_user(request):
         users = list(User.objects.all().values())
         if len(users)>0:
             for user in users:
-                if request['body']['user_name'] == user['user_name']:
+                if request['body']['user_name'] == user['user_name'] | request['body']['user_name'] is None:
                     code = BCStatus.DUPLICATED_NAME_USER.code
                     description = BCStatus.DUPLICATED_NAME_USER.description
                     isValid = False
                     response = {"isValid": isValid, "description": description, "code": code}
                     break
-                elif request['body']['user_email'] == user['user_email']:
+                elif request['body']['user_email'] == user['user_email'] | request['body']['user_email'] is None:
                     code = BCStatus.DUPLICATED_EMAIL_USER.code
                     description = BCStatus.DUPLICATED_EMAIL_USER.description
                     isValid = False

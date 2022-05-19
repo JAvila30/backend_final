@@ -27,6 +27,7 @@ class ContainerView(View):
                 code, description, httpstatus, container_result = container_logic.getAllContainer()
                 response = util.build_response(code,description,httpstatus,container_result)
         except BusinessException as exception:
+            print(exception)
             response = util.build_response(
                 exception.code, 
                 exception.description,
@@ -63,6 +64,7 @@ class ContainerView(View):
             code, description, httpstatus = container_logic.save_container(json_payload)
             response = util.build_response(code,description,httpstatus,None)
         except BusinessException as exception:
+            print(exception)
             response = util.build_response(
                 exception.code, 
                 exception.description,
@@ -79,6 +81,7 @@ class ContainerView(View):
             code, description, httpstatus, container_status= container_logic.delete_container(id)
             response = util.build_response(code,description,httpstatus,container_status)
         except BusinessException as exception:
+            print(exception)
             response = util.build_response(
                 exception.code, 
                 exception.description,

@@ -23,6 +23,7 @@ class ClientView(View):
                 code, description, httpstatus, execution_result = client_logic.get_all()
                 response = util.build_response(code,description,httpstatus,execution_result)
         except BusinessException as exception:
+            print(exception)
             response = util.build_response(
                 exception.code, 
                 exception.description,
@@ -59,6 +60,7 @@ class ClientView(View):
             code, description, httpstatus, execution_response = client_logic.save(json_payload)
             response = util.build_response(code,description,httpstatus,execution_response)
         except BusinessException as exception:
+            print(exception)
             response = util.build_response(
                 exception.code, 
                 exception.description,
@@ -75,6 +77,7 @@ class ClientView(View):
             code, description, httpstatus, execution_result= client_logic.delete(id)
             response = util.build_response(code,description,httpstatus,execution_result)
         except BusinessException as exception:
+            print(exception)
             response = util.build_response(
                 exception.code, 
                 exception.description,

@@ -24,6 +24,7 @@ class ProductView(View):
                 code, description, httpstatus, execution_response = product_logic.get_all()
                 response = util.build_response(code, description, httpstatus, execution_response)
         except BusinessException as exception:
+            print(exception)
             response = util.build_response(
                 exception.code, 
                 exception.description,
@@ -41,6 +42,7 @@ class ProductView(View):
                 code, description, httpstatus, execution_response = product_logic.save_product(json_payload)
                 response = util.build_response(code,description,httpstatus,execution_response)
             except BusinessException as exception:
+                print(exception)
                 response = util.build_response(
                     exception.code, 
                     exception.description,
@@ -75,6 +77,7 @@ class ProductView(View):
             code, description, httpstatus, execution_response = product_logic.delete_product(id)
             response = util.build_response(code,description,httpstatus,execution_response)
         except BusinessException as exception:
+            print(exception)
             response = util.build_response(
                 exception.code, 
                 exception.description,
