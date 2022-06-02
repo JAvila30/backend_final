@@ -46,10 +46,12 @@ def save_product(request):
     try:
         Product.objects.create(prod_uuid=product_uuid, 
                                cli_uuid=product_data["body"]['cli_uuid'], 
-                                 prod_name=product_data["body"]['name'], 
-                                 container_uuid=product_data["body"]['container_uuid'], 
-                                 prod_harvest_date=product_data["body"]['harvest_date'],
-                                 prod_type=product_data["body"]['type'])
+                                prod_name=product_data["body"]['name'], 
+                                container_uuid=product_data["body"]['container_uuid'], 
+                                prod_harvest_date=product_data["body"]['harvest_date'],
+                                prod_type=product_data["body"]['type'],
+                                prod_qty=product_data["body"]['prod_qty'])
+               
         response =  BCStatus.SUCESS.code , BCStatus.SUCESS.description, HTTPStatus.OK, None
     except Exception as e:
         print(e)
@@ -72,6 +74,7 @@ def update_product(request, product_id):
             product.prod_name=product_data["body"]['name']
             product.prod_harvest_date=product_data["body"]['harvest_date']
             product.prod_type=product_data["body"]['type']
+            product.prod_qty=product_data["body"]['prod_qty']
             product.save()
             response = BCStatus.SUCESS.code ,BCStatus.SUCESS.description , HTTPStatus.OK,  None
         else:

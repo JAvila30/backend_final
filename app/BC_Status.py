@@ -14,7 +14,7 @@ class BCStatus(Enum):
     DUPLICATED_NAME_USER = ("007","Error, el nombre de usuario ya existe")
     DUPLICATED_EMAIL_USER = ("008","Error, el correo ya existe")
     DUPLICATED_PLAQUE_TRUCK_NUMBER = ("009","Error, el número de placa introducido ya existe.")
-    DUPLICATED_TRUCK_NUMBER = ("009","Error, el número de camión introducido ya existe.")
+    DUPLICATED_TRUCK_NUMBER = ("010","Error, el número de camión introducido ya existe.")
     
     def __init__(self, code: str, description: str): 
         self.code = code

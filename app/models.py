@@ -30,6 +30,7 @@ class Product(models.Model):
     prod_register_date=models.DateTimeField(default=datetime.datetime.now)
     prod_harvest_date=models.DateField()
     prod_type=models.CharField(max_length=64)
+    prod_qty=models.FloatField()
     
 class User(models.Model):
     user_uuid=models.CharField(max_length=64)
