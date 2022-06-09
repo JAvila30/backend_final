@@ -62,7 +62,7 @@ CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'djangopy.urls'
-
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -84,6 +84,7 @@ WSGI_APPLICATION = 'djangopy.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
+#
 
 DATABASES = {
     'default': {
@@ -109,7 +110,7 @@ DATABASES = {
 #        }
 #    }
 #}
-#
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators

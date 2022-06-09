@@ -1,3 +1,4 @@
+import re
 from app.models import User
 from app.BC_Status import BCStatus
 from app.utils.exceptions import BusinessException
@@ -42,22 +43,25 @@ def get_one(id):
 
 def save(request):
     data = request
-    gen_uuid = uuid.uuid4()
-    encryptedpassword=make_password(data["body"]['user_pass'])
+
     try:
         user_name = data["body"]['user_name']
         validation = validate_new_user(data)
+        print(validation)
         if validation['isValid']:
+            gen_uuid = uuid.uuid4()
+            encryptedpassword=make_password(data["body"]['user_pass'])
             User.objects.create(user_uuid=gen_uuid, 
                                 user_name=data["body"]['user_name'], 
                                     user_password=encryptedpassword, 
                                     user_email=data["body"]['user_email'], 
                                     user_direction=data["body"]['user_dir'],
                                     user_cellphone=data["body"]['user_cellphone'],
-                                    user_role=data["body"]['user_role'])
+                                    user_role=int(data["body"]['user_role']))
             response = validation['code'],  validation['description'], HTTPStatus.OK, user_name
         else:
             response =   validation['code'],  validation['description'], HTTPStatus.BAD_REQUEST, user_name
+        return response
     except BusinessException as e:
         print(e)
     except Exception as e:
@@ -68,21 +72,24 @@ def save(request):
             HTTPStatus.BAD_REQUEST,
             e
         )
-    return response
+   
 
 def validate_new_user(request):
-    print("Inicio de validate_new_user", request)
+    #print("Inicio de validate_new_user", request)
     try:
         users = list(User.objects.all().values())
         if len(users)>0:
             for user in users:
-                if request['body']['user_name'] == user['user_name'] | request['body']['user_name'] is None:
+                print( user['user_name'])
+                if request['body']['user_name'] == user['user_name']:
+                    print("primer if")
                     code = BCStatus.DUPLICATED_NAME_USER.code
                     description = BCStatus.DUPLICATED_NAME_USER.description
                     isValid = False
                     response = {"isValid": isValid, "description": description, "code": code}
                     break
-                elif request['body']['user_email'] == user['user_email'] | request['body']['user_email'] is None:
+                elif request['body']['user_email'] == user['user_email']:
+                    print("segundor if")
                     code = BCStatus.DUPLICATED_EMAIL_USER.code
                     description = BCStatus.DUPLICATED_EMAIL_USER.description
                     isValid = False
@@ -100,6 +107,7 @@ def validate_new_user(request):
             response = {"isValid": isValid, "description": description, "code": code}
         return response
     except Exception as e:
+        print("entre a la excepción")
         print(e)
         raise BusinessException(
             BCStatus.FATAL_ERROR.code ,
